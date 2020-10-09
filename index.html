@@ -1,469 +1,119 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Hexo</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Hexo">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="6.数组处理批量数据6.4 将整型数组元素行列位置对调1234567891011121314151617181920212223242526#include&lt;stdio.h&gt;int main() &amp;#123;	int a[2][3]&#x3D;&amp;#123;&amp;#123;1,2,3&amp;#125;,&amp;#123;4,5,6&amp;#125;&amp;#125;;	int b[3][2],i,j;		printf(&amp;qu">
-<meta property="og:type" content="article">
-<meta property="og:title" content="6_array_data_processing_2">
-<meta property="og:url" content="http://example.com/2020/10/08/6-array-data-processing-2/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="6.数组处理批量数据6.4 将整型数组元素行列位置对调1234567891011121314151617181920212223242526#include&lt;stdio.h&gt;int main() &amp;#123;	int a[2][3]&#x3D;&amp;#123;&amp;#123;1,2,3&amp;#125;,&amp;#123;4,5,6&amp;#125;&amp;#125;;	int b[3][2],i,j;		printf(&amp;qu">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-08T05:02:36.000Z">
-<meta property="article:modified_time" content="2020-10-08T05:05:50.692Z">
-<meta property="article:author" content="John Doe">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="array">
-<meta name="twitter:card" content="summary">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Hexo"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Hexo"><meta property="og:url" content="http://example.com/"><meta property="og:site_name" content="Hexo"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com"},"headline":"Hexo","image":["http://example.com/img/og_image.png"],"author":{"@type":"Person","name":"John Doe"},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.2.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-10-08T05:02:36.000Z" title="2020-10-08T05:02:36.000Z">2020-10-08</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-10-08T05:05:50.692Z" title="2020-10-08T05:05:50.692Z">2020-10-08</time></span><span class="level-item"><a class="link-muted" href="/categories/Programming/">Programming</a><span> / </span><a class="link-muted" href="/categories/Programming/C/">C</a></span><span class="level-item">2 minutes read (About 345 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/10/08/6-array-data-processing-2/">6_array_data_processing_2</a></h1><div class="content"><h3 id="6-数组处理批量数据"><a href="#6-数组处理批量数据" class="headerlink" title="6.数组处理批量数据"></a>6.数组处理批量数据</h3><h6 id="6-4-将整型数组元素行列位置对调"><a href="#6-4-将整型数组元素行列位置对调" class="headerlink" title="6.4 将整型数组元素行列位置对调"></a>6.4 将整型数组元素行列位置对调</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">3</span>]=&#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;&#125;;</span><br><span class="line">	<span class="keyword">int</span> b[<span class="number">3</span>][<span class="number">2</span>],i,j;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;array a:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=<span class="number">1</span>;i++)			<span class="comment">//遍历二维数组a 元素并赋值于b;遍历行 </span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (j=<span class="number">0</span>;j&lt;=<span class="number">2</span>;j++)		<span class="comment">//遍历数组a 列 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;%5d&quot;</span>,a[i][j]);</span><br><span class="line">				b[j][i]=a[i][j];	<span class="comment">//数组a中元素与数组b中 元素对调(行、列） </span></span><br><span class="line">			&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;array b:\n&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=<span class="number">2</span>;i++)			<span class="comment">//遍历数组b,循环结构for遍历行 </span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;=<span class="number">1</span>;j++)	<span class="comment">//遍历列 </span></span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;%5d&quot;</span>,b[i][j]);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h6 id="6-5-将整型数组中最大值元素及相应行列位置输出"><a href="#6-5-将整型数组中最大值元素及相应行列位置输出" class="headerlink" title="6.5 将整型数组中最大值元素及相应行列位置输出"></a>6.5 将整型数组中最大值元素及相应行列位置输出</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,row=<span class="number">0</span>,colum=<span class="number">0</span>,max;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">3</span>][<span class="number">4</span>]=&#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,&#123;<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>&#125;,&#123;<span class="number">-10</span>,<span class="number">10</span>,<span class="number">-5</span>,<span class="number">2</span>&#125;&#125;;</span><br><span class="line">	max=a[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=<span class="number">2</span>;i++)		<span class="comment">//数组遍历，行遍历 </span></span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;=<span class="number">3</span>;j++)	<span class="comment">// 数组遍历，列遍历 </span></span><br><span class="line">			<span class="keyword">if</span>(a[i][j]&gt;max)		<span class="comment">//“打擂台”算法 </span></span><br><span class="line">				&#123;max=a[i][j];</span><br><span class="line">				row=i;</span><br><span class="line">				colum=j;</span><br><span class="line">				&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;max=%d\nrow=%d\ncolum=%d\n&quot;</span>,max,row,colum);		<span class="comment">//最大值输出、行/列号输出 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125; </span><br></pre></td></tr></table></figure>
 
-<link rel="icon" href="/img/avatar.jpg">
+<h6 id="6-6-字符数组输出特定字符"><a href="#6-6-字符数组输出特定字符" class="headerlink" title="6.6 字符数组输出特定字符"></a>6.6 字符数组输出特定字符</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> c[<span class="number">15</span>]=&#123;<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;m&#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;s&#x27;</span>,<span class="string">&#x27;t&#x27;</span>,<span class="string">&#x27;u&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>,<span class="string">&#x27;n&#x27;</span>,<span class="string">&#x27;t&#x27;</span>,<span class="string">&#x27;.&#x27;</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">15</span>;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,c[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125; </span><br></pre></td></tr></table></figure>
 
-<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+<h6 id="6-7-用星号（-）输出钻石图案"><a href="#6-7-用星号（-）输出钻石图案" class="headerlink" title="6.7 用星号（*）输出钻石图案"></a>6.7 用星号（*）输出钻石图案</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> diamond[][<span class="number">5</span>]=&#123;&#123;<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;*&#x27;</span>&#125;,&#123;<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;*&#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;*&#x27;</span>,<span class="string">&#x27; &#x27;</span>&#125;,&#123;<span class="string">&#x27;*&#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;*&#x27;</span>&#125;,&#123;<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;*&#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;*&#x27;</span>,<span class="string">&#x27; &#x27;</span>&#125;,&#123;<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;*&#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27; &#x27;</span>&#125;&#125;;	<span class="comment">//定义字符数组元素初始值，5行5列 </span></span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)	<span class="comment">//遍历数组元素，行遍历 </span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">5</span>;j++)	<span class="comment">//遍历数组元素，列遍历 </span></span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,diamond[i][j]);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-10-07T14:28:02.000Z" title="2020-10-07T14:28:02.000Z">2020-10-07</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-10-08T00:43:09.789Z" title="2020-10-08T00:43:09.789Z">2020-10-08</time></span><span class="level-item"><a class="link-muted" href="/categories/Programming/">Programming</a><span> / </span><a class="link-muted" href="/categories/Programming/C/">C</a></span><span class="level-item">2 minutes read (About 338 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/10/07/6-array-data-processing/">6_array_data_processing</a></h1><div class="content"><h3 id="6-数组处理批量数据"><a href="#6-数组处理批量数据" class="headerlink" title="6.数组处理批量数据"></a>6.数组处理批量数据</h3><h5 id="6-1-为数组赋值0-9，并将数组元素逆序输出"><a href="#6-1-为数组赋值0-9，并将数组元素逆序输出" class="headerlink" title="6.1 为数组赋值0~9，并将数组元素逆序输出"></a>6.1 为数组赋值0~9，并将数组元素逆序输出</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,a[<span class="number">10</span>];		<span class="comment">//定义整型变量i ，整型数组a  </span></span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=<span class="number">9</span>;i++)	<span class="comment">//循环for为数组元素赋值 </span></span><br><span class="line">		a[i]=i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">9</span>;i&gt;=<span class="number">0</span>;i--)	<span class="comment">//循环for 将数组元素逆序输出 </span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
-
-<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-<script src="/js/titleTip.js?v=1.1.0" ></script>
-
-<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
-<script>
-    hljs.initHighlightingOnLoad();
-</script>
-
-<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
-
-
-
-<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
-
-<script src="/js/iconfont.js?v=1.1.0" ></script>
-
-<meta name="generator" content="Hexo 5.2.0"></head>
-<div style="display: none">
-  <input class="theme_disqus_on" value="false">
-  <input class="theme_preload_comment" value="">
-  <input class="theme_blog_path" value="">
-  <input id="theme_shortcut" value="true" />
-  <input id="theme_highlight_on" value="true" />
-  <input id="theme_code_copy" value="true" />
-</div>
-
-
-
-<body>
-<aside class="nav mobile">
-    <div class="nav-left">
-        <a href="/" class="avatar_target">
-    <img class="avatar" src="/img/avatar.jpg" />
-</a>
-<div class="author">
-    <span>John Doe</span>
-</div>
-
-<div class="icon">
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a title="email" href="mailto:mlfa16@126.com" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-email"></use>
-                </svg>
-            
-        </a>
-        
-    
-</div>
+<h5 id="6-2-输出斐波那契数列第2-21项-斐波那契数列：0，1，1，2，3，5…"><a href="#6-2-输出斐波那契数列第2-21项-斐波那契数列：0，1，1，2，3，5…" class="headerlink" title="6.2 输出斐波那契数列第2~21项(斐波那契数列：0，1，1，2，3，5…)"></a>6.2 输出斐波那契数列第2~21项(斐波那契数列：0，1，1，2，3，5…)</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">int</span> f[<span class="number">20</span>]=&#123;<span class="number">1</span>,<span class="number">1</span>&#125;;	<span class="comment">//定义整型数组，第1，2项均为1 </span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;<span class="number">20</span>;i++)	<span class="comment">//循环结构for为整型数组第3至20项赋值 </span></span><br><span class="line">		f[i]=f[i<span class="number">-2</span>]+f[i<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">20</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i%<span class="number">5</span>==<span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%12d&quot;</span>,f[i]);	<span class="comment">//输出数组元素值，每数值占12列且右对齐 </span></span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
 
-<ul>
-    <li><div class="all active" data-rel="All">All<small>(3)</small></div></li>
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
-            <li><div data-rel="Programming"><i class="fold iconfont icon-right"></i>Programming<small>(2)</small></div>
-                
-                    <ul class="sub hide">
-                        
-                        <li><div data-rel="Programming<--->C">C<small>(2)</small></div>
-                            
-                        </li>
-                            
-                    </ul>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="Tools"><i class="fold iconfont icon-right"></i>Tools<small>(1)</small></div>
-                
-                    <ul class="sub hide">
-                        
-                        <li><div data-rel="Tools<--->Blog">Blog<small>(1)</small></div>
-                            
-                        </li>
-                            
-                    </ul>
-                
-            </li>
-            
-        
-    
-</ul>
-<div class="left-bottom">
-    <div class="menus">
-    
-    
-    
-    
-    </div>
-    <div></div>
-</div>
-<input type="hidden" id="yelog_site_posts_number" value="3">
-
-<div style="display: none">
-    <span id="busuanzi_value_site_uv"></span>
-    <span id="busuanzi_value_site_pv"></span>
-</div>
-
-    </div>
-    <div class="nav-right">
-        <div class="friends-area">
-    <div class="friends-title">
-        Links
-        <i class="iconfont icon-left"></i>
-    </div>
-    <div class="friends-content">
-        <ul>
-            
-        </ul>
-    </div>
-</div>
-        <div class="title-list">
-    <div class="right-top">
-        <div id="default-panel">
-            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
-            <div class="right-title">All</div>
-            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
-        </div>
-        <div id="search-panel">
-            <i class="iconfont icon-left" data-title="返回"></i>
-            <input id="local-search-input" />
-            <label class="border-line" for="input"></label>
-            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
-            <i class="iconfont icon-tag" data-title="标签"></i>
-        </div>
-        <div id="outline-panel" style="display: none">
-            <div class="right-title">大纲</div>
-            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
-        </div>
-    </div>
-
-    <div class="tags-list">
-    <input id="tag-search" />
-    <div class="tag-wrapper">
-        
-            <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>array</a>
-            </li>
-        
-            <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>C</a>
-            </li>
-        
-            <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>github</a>
-            </li>
-        
-            <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>hexo</a>
-            </li>
-        
-    </div>
-
-</div>
-
-    
-    <nav id="title-list-nav">
-        
-        <a  class="All Programming C "
-           href="/2020/10/08/6-array-data-processing-2/"
-           data-tag="C,array"
-           data-author="" >
-            <span class="post-title" title="6_array_data_processing_2">6_array_data_processing_2</span>
-            <span class="post-date" title="2020-10-08 13:02:36">2020/10/08</span>
-        </a>
-        
-        <a  class="All Programming C "
-           href="/2020/10/07/6-array-data-processing/"
-           data-tag="C,array"
-           data-author="" >
-            <span class="post-title" title="6_array_data_processing">6_array_data_processing</span>
-            <span class="post-date" title="2020-10-07 22:28:02">2020/10/07</span>
-        </a>
-        
-        <a  class="All Tools Blog "
-           href="/2020/10/07/Hexo-and-Github-Based-Personal-Blogs/"
-           data-tag="hexo,github"
-           data-author="" >
-            <span class="post-title" title="Hexo_github_搭建个人博客">Hexo_github_搭建个人博客</span>
-            <span class="post-date" title="2020-10-07 10:44:11">2020/10/07</span>
-        </a>
-        
-        <div id="no-item-tips">
-
-        </div>
-    </nav>
-    <div id="outline-list">
-    </div>
-</div>
-    </div>
-    <div class="hide-list">
-        <div class="semicircle" data-title="切换全屏 快捷键 s">
-            <div class="brackets first"><</div>
-            <div class="brackets">&gt;</div>
-        </div>
-    </div>
-</aside>
-<div id="post" class="index">
-    <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
-    
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#hello-world"><span class="toc-text">hello world.</span></a></li></ol>
-    
-<style>
-    .left-col .switch-btn,
-    .left-col .switch-area {
-        display: none;
-    }
-    .toc-level-3 i,
-    .toc-level-3 ol {
-        display: none !important;
-    }
-</style>
-</div>
-            <h3 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world."></a>hello world.</h3>
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
-    </div>
-    <div class="copyright">
-        <p class="footer-entry">
-    [object Object]
-</p>
-<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
-
-    </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
-<a class="" id="rocket" ></a>
-
-</div>
-
-<div class="hide_box" onclick="dashangToggle()"></div>
-<div class="shang_box">
-    <a class="shang_close"  onclick="dashangToggle()">×</a>
-    <div class="shang_tit">
-        <p>Help us with donation</p>
-    </div>
-    <div class="shang_payimg">
-        <div class="pay_img">
-            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
-            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
-        </div>
-    </div>
-    <div class="shang_payselect">
-        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
-    </div>
-</div>
+<h5 id="6-3-自定义10个数值，将数值按升序形式输出（冒泡排序法）"><a href="#6-3-自定义10个数值，将数值按升序形式输出（冒泡排序法）" class="headerlink" title="6.3 自定义10个数值，将数值按升序形式输出（冒泡排序法）"></a>6.3 自定义10个数值，将数值按升序形式输出（冒泡排序法）</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">10</span>];</span><br><span class="line">	<span class="keyword">int</span> i,j,t;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input 10 numbers :\n&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)	<span class="comment">//循环结构for 读取数据并存储 </span></span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">9</span>;j++)	<span class="comment">//重复趟数总计9次，遍历每趟 </span></span><br><span class="line">	 <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">9</span>-j;i++)	<span class="comment">// 每趟内遍历数组元素 </span></span><br><span class="line">	  <span class="keyword">if</span>(a[i]&gt;a[i+<span class="number">1</span>])</span><br><span class="line">	  	&#123;t=a[i];a[i]=a[i+<span class="number">1</span>];a[i+<span class="number">1</span>]=t;&#125;	<span class="comment">//条件判断，若前一项大于后一项，进行数值交换 </span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;the sorted numbers :\n&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)	<span class="comment">//循环结构输出sorted 后的数组元素 </span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,a[i]);	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125; </span><br></pre></td></tr></table></figure></div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-10-07T02:44:11.000Z" title="2020-10-07T02:44:11.000Z">2020-10-07</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-10-07T03:10:01.190Z" title="2020-10-07T03:10:01.190Z">2020-10-07</time></span><span class="level-item"><a class="link-muted" href="/categories/Tools/">Tools</a><span> / </span><a class="link-muted" href="/categories/Tools/Blog/">Blog</a></span><span class="level-item">6 minutes read (About 939 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/10/07/Hexo-and-Github-Based-Personal-Blogs/">Hexo_github_搭建个人博客</a></h1><div class="content"><h3 id="个人博客搭建（github-nodejs-hexo-theme-3-Hexo-）："><a href="#个人博客搭建（github-nodejs-hexo-theme-3-Hexo-）：" class="headerlink" title="个人博客搭建（github + nodejs + hexo + theme (3-Hexo)）："></a>个人博客搭建（github + nodejs + hexo + theme (3-Hexo)）：</h3><h4 id="1-git-下载与安装"><a href="#1-git-下载与安装" class="headerlink" title="1.git 下载与安装"></a>1.git 下载与安装</h4><h5 id="git-简介："><a href="#git-简介：" class="headerlink" title="git 简介："></a>git 简介：</h5><p>Git (/ɡɪt/)is a distributed version-control system（分布式版本控制系统） for tracking changes in source code during software development.It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its goals include speed, data integrity, and support for distributed, non-linear workflows[clarification needed].</p>
+<p>The reasons why we use <strong>git</strong><br><img src="https://www.google.com/imgres?imgurl=https://www.nobledesktop.com/image/blog/git-branches-merge.png&imgrefurl=https://www.nobledesktop.com/blog/what-is-git-and-why-should-you-use-it&tbnid=RuCur-BGF1IeWM&vet=12ahUKEwiNieac4Z_sAhUHa5QKHZi8D6MQMygkegUIARCZAg..i&docid=fN9btghZUqB8kM&w=968&h=496&q=git&ved=2ahUKEwiNieac4Z_sAhUHa5QKHZi8D6MQMygkegUIARCZAg"></p>
+<h5 id="git-下载与安装："><a href="#git-下载与安装：" class="headerlink" title="git 下载与安装："></a>git 下载与安装：</h5><p>you can download ： <a target="_blank" rel="noopener" href="https://git-scm.com/downloads">website</a></p>
+<p>the installtion just follows the defalut.</p>
+<h5 id="git-使用："><a href="#git-使用：" class="headerlink" title="git 使用："></a>git 使用：</h5><p>git 中文教程: <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">廖雪峰git 教程</a></p>
+<h4 id="2-Nodejs-下载与安装"><a href="#2-Nodejs-下载与安装" class="headerlink" title="2.Nodejs 下载与安装"></a>2.Nodejs 下载与安装</h4><h5 id="nodejs-简介："><a href="#nodejs-简介：" class="headerlink" title="nodejs 简介："></a>nodejs <a target="_blank" rel="noopener" href="https://nodejs.org/en/about/">简介：</a></h5><p>As an <strong>asynchronous event-driven JavaScript runtime</strong>, Node.js is designed to <strong>build scalable network applications</strong>. In the following “hello world” example, many connections can be handled concurrently. Upon each connection, the callback is fired, but if there is no work to be done, Node.js will sleep.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">&#x27;127.0.0.1&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.statusCode = <span class="number">200</span>;</span><br><span class="line">  res.setHeader(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/plain&#x27;</span>);</span><br><span class="line">  res.end(<span class="string">&#x27;Hello World&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(port, hostname, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Server running at http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-</body>
-<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+<h5 id="nodejs-下载与安装："><a href="#nodejs-下载与安装：" class="headerlink" title="nodejs 下载与安装："></a>nodejs 下载与安装：</h5><p>根据操作系统选择相应 ‘source code’ 或者 ‘pre-built installer’<br>安装过程保持默认设置即可</p>
+<h5 id="nodejs-使用："><a href="#nodejs-使用：" class="headerlink" title="nodejs 使用："></a>nodejs 使用：</h5><p>官方手册 <a target="_blank" rel="noopener" href="https://nodejs.org/dist/latest-v12.x/docs/api/">documentation</a></p>
+<h4 id="3-Hexo-下载与安装"><a href="#3-Hexo-下载与安装" class="headerlink" title="3.Hexo 下载与安装"></a>3.Hexo 下载与安装</h4><h5 id="Hexo-简介："><a href="#Hexo-简介：" class="headerlink" title="Hexo 简介："></a>Hexo <a target="_blank" rel="noopener" href="https://hexo.io/docs/">简介：</a></h5><p>Hexo is a fast, simple and powerful blog framework. You write posts in Markdown (or other markup languages) and Hexo generates static files with a beautiful theme in seconds.</p>
+<h5 id="Hexo-下载与安装："><a href="#Hexo-下载与安装：" class="headerlink" title="Hexo 下载与安装："></a>Hexo 下载与安装：</h5><h6 id="3-1-命令行安装"><a href="#3-1-命令行安装" class="headerlink" title="3.1. 命令行安装"></a>3.1. 命令行安装</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<script src="/js/script.js?v=1.1.0" ></script>
-<script>
-    var img_resize = 'default';
-    function initArticle() {
-        /*渲染对应的表格样式*/
-        
-            $("#post .pjax table").addClass("green_title");
-        
+<p>windows 系统可能出现报错： <code>win32 不支持 fsevents</code> ， SKIPPING OPTIONAL DEPENDENCY， 不影响 hexo 基本功能<br><a target="_blank" rel="noopener" href="https://docs.npmjs.com/files/package.json#optionaldependencies">json optional dependencies</a> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@~2.1.2 (node_modules\hexo-cli\node_modules\chokidar\node_module</span><br><span class="line">s\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.1.3: wanted &#123;&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any</span><br><span class="line">&quot;&#125; (current: &#123;&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;x64&quot;&#125;)</span><br></pre></td></tr></table></figure>
 
-        /*渲染打赏样式*/
-        
-        $("input[name=pay]").on("click", function () {
-            if($("input[name=pay]:checked").val()=="weixin"){
-                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
-            } else {
-                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+<h6 id="3-2-检查-hexo-是否已经安装成功："><a href="#3-2-检查-hexo-是否已经安装成功：" class="headerlink" title="3.2.检查 hexo 是否已经安装成功："></a>3.2.检查 hexo 是否已经安装成功：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo version</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT</span><br><span class="line">node: 12.18.4</span><br><span class="line">v8: 7.8.279.23-</span><br><span class="line">uv: 1.38.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">brotli: 1.0.7</span><br><span class="line">ares: 1.16.0</span><br><span class="line">modules: 72</span><br><span class="line">nghttp2: 1.41.0</span><br><span class="line">napi: 6</span><br><span class="line">llhttp: 2.1.2</span><br><span class="line">http_parser: 2.</span><br><span class="line">openssl: 1.1.1g</span><br><span class="line">cldr: 37.0</span><br><span class="line">icu: 67.1</span><br><span class="line">tz: 2019c</span><br><span class="line">unicode: 13.0</span><br></pre></td></tr></table></figure>
+<h6 id="3-3-初始化-文件克隆-hexo-starter、Submodule-themes-landscape、；安装依赖"><a href="#3-3-初始化-文件克隆-hexo-starter、Submodule-themes-landscape、；安装依赖" class="headerlink" title="3.3.初始化(文件克隆 hexo-starter、Submodule themes/landscape、；安装依赖)"></a>3.3.初始化(文件克隆 hexo-starter、Submodule themes/landscape、；安装依赖)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init username.github.io</span><br></pre></td></tr></table></figure>
+
+<p>初始化成功提醒：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO  Start blogging with Hexo!</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-4-测试-本地服务-是否可以启动"><a href="#3-4-测试-本地服务-是否可以启动" class="headerlink" title="3.4.测试 本地服务 是否可以启动"></a>3.4.测试 本地服务 是否可以启动</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>server 成功提醒INFO ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INFO  Validating config</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http:&#x2F;&#x2F;localhost:4000 . Press Ctrl+C to stop.</span><br><span class="line">INFO  Bye!</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-5-生成-SSH-Keys-并添加至-github-测试-本地与-github-通信是否成功"><a href="#3-5-生成-SSH-Keys-并添加至-github-测试-本地与-github-通信是否成功" class="headerlink" title="3.5. 生成 SSH Keys, 并添加至 github, 测试 本地与 github 通信是否成功"></a>3.5. 生成 SSH Keys, 并添加至 github, 测试 本地与 github 通信是否成功</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;***@***.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>KEY 添加方法 ： Github –&gt; settings —&gt;  SSH keys setting </p>
+<p>通信测试 ： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi ***! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+
+<p>or</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh git@github.com</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hi ******! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</span><br><span class="line">Connection to github.com closed.</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-6-配置-SSH-服务-、-config-yml文件-：-如未配置，则每次-hexo-deploy-均需要输入用户名及密码"><a href="#3-6-配置-SSH-服务-、-config-yml文件-：-如未配置，则每次-hexo-deploy-均需要输入用户名及密码" class="headerlink" title="3.6. 配置 SSH 服务 、_config.yml文件  ： 如未配置，则每次 hexo deploy 均需要输入用户名及密码:"></a>3.6. 配置 SSH 服务 、<code>_config.yml</code>文件  ： 如未配置，则每次 <code>hexo deploy</code> 均需要输入用户名及密码:</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;******&quot;&#x2F;&#x2F; github用户名</span><br><span class="line">$ git config --global user.email  &quot;******&quot;&#x2F;&#x2F; github注册邮箱</span><br></pre></td></tr></table></figure>
+
+<p><code>_config.yml</code>文件更改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:username&#x2F;username.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>不当写法：此种写法为 <code>hexo2.*</code> 版本书写规则，执行 <code>hexo d</code> 时会导致报错 <code>Deployer not found: github or Deployer not found: git </code> , 可通过安装插件解决 <code>npm install hexo-deployer-git --save</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: github</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;username&#x2F;username.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-域名解析："><a href="#4-域名解析：" class="headerlink" title="4. 域名解析："></a>4. 域名解析：</h5><p>添加域名解析后，可使个性化域名指向博客 。<br>为域名添加两条记录：<br>主机记录（@ ; www）; 记录类型（A ; CNAME）; 解析线路 （默认 ; 默认） ； 记录值 （ IP ； ***.github.io） ; TTL (10min ;10min)</p>
+<p>IP 获取方式 ： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping ***.github.com  </span><br></pre></td></tr></table></figure>
+
+
+
+
+<h5 id="5-Hexo-使用教程（主题更换）："><a href="#5-Hexo-使用教程（主题更换）：" class="headerlink" title="5. Hexo 使用教程（主题更换）："></a>5. Hexo 使用教程（主题更换）：</h5><p><a target="_blank" rel="noopener" href="https://hexo.io/docs/">官方教程</a><br><a target="_blank" rel="noopener" href="https://yelog.org/2017/03/23/3-hexo-instruction/">3-hexo yelog</a></p>
+</div></article></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">4</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Programming/"><span class="level-start"><span class="level-item">Programming</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/categories/Programming/C/"><span class="level-start"><span class="level-item">C</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Tools/"><span class="level-start"><span class="level-item">Tools</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/categories/Tools/Blog/"><span class="level-start"><span class="level-item">Blog</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-10-08T05:02:36.000Z">2020-10-08</time></p><p class="title"><a href="/2020/10/08/6-array-data-processing-2/">6_array_data_processing_2</a></p><p class="categories"><a href="/categories/Programming/">Programming</a> / <a href="/categories/Programming/C/">C</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-10-07T14:28:02.000Z">2020-10-07</time></p><p class="title"><a href="/2020/10/07/6-array-data-processing/">6_array_data_processing</a></p><p class="categories"><a href="/categories/Programming/">Programming</a> / <a href="/categories/Programming/C/">C</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-10-07T02:44:11.000Z">2020-10-07</time></p><p class="title"><a href="/2020/10/07/Hexo-and-Github-Based-Personal-Blogs/">Hexo_github_搭建个人博客</a></p><p class="categories"><a href="/categories/Tools/">Tools</a> / <a href="/categories/Tools/Blog/">Blog</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2020/10/"><span class="level-start"><span class="level-item">October 2020</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/array/"><span class="tag">array</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github/"><span class="tag">github</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2020 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
             }
-        })
-        
-
-        /*高亮代码块行号*/
-        
-
-        /*访问数量*/
-        
-        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
-        
-
-        /*代码高亮，行号对齐*/
-        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
-        
-        
-    }
-
-    /*打赏页面隐藏与展示*/
-    
-    function dashangToggle() {
-        $(".shang_box").fadeToggle();
-        $(".hide_box").fadeToggle();
-    }
-    
-
-</script>
-
-<!--加入行号的高亮代码块样式-->
-
-<!--自定义样式设置-->
-<style>
-    
-    
-    .nav {
-        width: 542px;
-    }
-    .nav.fullscreen {
-        margin-left: -542px;
-    }
-    .nav-left {
-        width: 120px;
-    }
-    
-    
-    @media screen and (max-width: 1468px) {
-        .nav {
-            width: 492px;
-        }
-        .nav.fullscreen {
-            margin-left: -492px;
-        }
-        .nav-left {
-            width: 100px;
-        }
-    }
-    
-    
-    @media screen and (max-width: 1024px) {
-        .nav {
-            width: 492px;
-            margin-left: -492px
-        }
-        .nav.fullscreen {
-            margin-left: 0;
-        }
-    }
-    
-    @media screen and (max-width: 426px) {
-        .nav {
-            width: 100%;
-        }
-        .nav-left {
-            width: 100%;
-        }
-    }
-    
-    
-    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
-        color: #383636;
-    }
-    
-    
-    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
-        color: #5e5e5f;
-    }
-    
-    
-    .nav-right nav a.hover, #local-search-result a.hover{
-        background-color: #e2e0e0;
-    }
-    
-    
-
-    /*列表样式*/
-    
-
-    /* 背景图样式 */
-    
-    
-
-
-    /*引用块样式*/
-    
-
-    /*文章列表背景图*/
-    
-    .nav-right:before {
-        content: ' ';
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.3;
-        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
-        background-repeat: no-repeat;
-        background-position: 50% 0;
-        -ms-background-size: cover;
-        -o-background-size: cover;
-        -moz-background-size: cover;
-        -webkit-background-size: cover;
-        background-size: cover;
-    }
-    
-
-    
-</style>
-
-
-
-
-
-
-
-</html>
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
